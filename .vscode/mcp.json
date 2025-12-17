@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "ignis-docs": {
+      "command": "bunx",
+      "args": ["@venizia/ignis-docs@latest"]
+    }
+  }
+}

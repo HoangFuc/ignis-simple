@@ -5,6 +5,9 @@ import {
   type ValueOrPromise,
 } from '@venizia/ignis';
 import packageJson from '../package.json';
+import { PostgresDataSource } from './datasources/postgres.datasource';
+import { ConfigurationRepository } from './repositories/configuration.repository';
+import { ConfigurationController } from './controllers/configuration.controller';
 
 export const appConfigs: IApplicationConfigs = {
   host: process.env.HOST ?? '0.0.0.0',
@@ -29,13 +32,11 @@ export class Application extends BaseApplication {
 
   // Hook 3: Register your resources (THIS IS THE MOST IMPORTANT ONE)
   preConfigure(): ValueOrPromise<void> {
-    // As your app grows, you'll add:
-    // this.dataSource(PostgresDataSource);    // Database connection
-    // this.repository(UserRepository);        // Data access layer
-    // this.service(UserService);              // Business logic
-    // this.component(AuthComponent);          // Auth setup
-    // For now, just register our controller
-    //  this.controller(HelloController);
+    this.dataSource(PostgresDataSource);
+
+    this.repository(ConfigurationRepository);
+
+    this.controller(ConfigurationController);
   }
 
   // Hook 4: Do cleanup or extra work after everything is set up
