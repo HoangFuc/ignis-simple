@@ -2,7 +2,7 @@ import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
   schema: './src/models/entities/configuration.model.ts',
-  out: '../migration',
+  out: './migration',
   dialect: 'postgresql',
   dbCredentials: {
     host: process.env.APP_ENV_POSTGRES_HOST!,
