@@ -3,7 +3,8 @@ import {
   configurationRelations,
   TConfigurationSchema,
 } from '@/models/entities/configuration.model';
-import { DefaultCRUDRepository, IDataSource, inject, repository } from '@venizia/ignis';
+import { DefaultCRUDRepository, inject, repository } from '@venizia/ignis';
+import type { IDataSource } from '@venizia/ignis';
 
 @repository({})
 export class ConfigurationRepository extends DefaultCRUDRepository<TConfigurationSchema> {
