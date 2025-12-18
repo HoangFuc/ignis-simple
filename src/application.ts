@@ -5,9 +5,9 @@ import {
   type ValueOrPromise,
 } from '@venizia/ignis';
 import packageJson from '../package.json';
+import { ConfigurationController, ProductController } from './controllers';
 import { PostgresDataSource } from './datasources/postgres.datasource';
-import { ConfigurationRepository } from './repositories/configuration.repository';
-import { ConfigurationController } from './controllers/configuration.controller';
+import { ConfigurationRepository, ProductRepository } from './repositories';
 
 export const appConfigs: IApplicationConfigs = {
   host: process.env.HOST ?? '0.0.0.0',
@@ -35,8 +35,10 @@ export class Application extends BaseApplication {
     this.dataSource(PostgresDataSource);
 
     this.repository(ConfigurationRepository);
+    this.repository(ProductRepository);
 
     this.controller(ConfigurationController);
+    this.controller(ProductController);
   }
 
   // Hook 4: Do cleanup or extra work after everything is set up

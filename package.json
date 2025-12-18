@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "5-minute quickstart example",
   "private": true,
+  "main": "src/index.js",
   "scripts": {
     "lint": "bun run eslint && bun run prettier:cli",
     "lint:fix": "bun run eslint --fix && bun run prettier:fix",

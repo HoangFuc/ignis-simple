@@ -1,3 +1,4 @@
+import { Product, productRelations, productTable } from '@/models/entities/product.model';
 import { BaseDataSource, datasource, TNodePostgresConnector, ValueOrPromise } from '@venizia/ignis';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
@@ -37,8 +38,11 @@ export class PostgresDataSource extends BaseDataSource<TNodePostgresConnector, I
       },
       schema: Object.assign(
         {},
-        { [Configuration.TABLE_NAME]: configurationTable },
+
+        { [Configuration.TABLE_NAME]: configurationTable, [Product.TABLE_NAME]: productTable },
+
         configurationRelations.relations,
+        productRelations.relations,
       ),
     });
   }
